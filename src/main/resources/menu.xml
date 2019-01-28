@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://www.menu.epam.com/menu"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://menu.epam.com/menu menu.xsd">
+
+
+
+    <food id="1" type="cold_snack">
+        <name>Ассорти рыбное</name>
+        <description>Слабосоленая форель, семга</description>
+        <portion>10/100/200</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="4.35$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Форель"/>
+            <ingridient name="Семга"/>
+        </ingridients>
+    </food>
+
+    <food id="2" type="cold_snack">
+        <name>Тарталетки с красной икрой</name>
+        <description>Тарталетки с красной икрой</description>
+        <portion>60/50</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="11$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Тарталетки"/>
+            <ingridient name="Икра красная"/>
+        </ingridients>
+    </food>
+
+    <food id="3" type="cold_snack">
+        <name>Закуска по-русски</name>
+        <description>Кусочки атлантической сельди с отварным картофелем, луком, лимоном и зеленью</description>
+        <portion>70/50/2/10</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="11$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Селедка"/>
+            <ingridient name="Картофель"/>
+            <ingridient name="Лук"/>
+            <ingridient name="Лимон"/>
+            <ingridient name="Укроп"/>
+            <ingridient name="Петрушка"/>
+        </ingridients>
+    </food>
+
+    <food id="4" type="cold_snack">
+        <name>Куриный рулет</name>
+        <description>Куриный рулет собственного производства</description>
+        <portion>100/5</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="7$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Куриное филе"/>
+            <ingridient name="Зелень"/>
+        </ingridients>
+    </food>
+
+    <food id="5" type="cold_snack">
+        <name>Бастурма</name>
+        <description>Вяленая нарезка из говяжьего мяса</description>
+        <portion>50/5</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="5.33$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Говядина"/>
+            <ingridient name="Зелень"/>
+        </ingridients>
+    </food>
+
+    <food id="6" type="cold_snack">
+        <name>Ассорти мясное</name>
+        <description>Нарезка из буженины, бастурмы, куриного рулета собственного производства и колбасы</description>
+        <portion>100/30</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="11.99$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Буженина"/>
+            <ingridient name="Бастурма"/>
+            <ingridient name="Куриный рулет"/>
+            <ingridient name="Колбаса"/>
+        </ingridients>
+    </food>
+
+    <food id="7" type="cold_snack">
+        <name>Язык отварной</name>
+        <description>Нарезка нежного говяжьего языка, подается с хреном</description>
+        <portion>80/20/1</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="13.50$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Говяжий язык"/>
+            <ingridient name="Хрен"/>
+            <ingridient name="Зелень"/>
+        </ingridients>
+    </food>
+
+    <food id="8" type="cold_snack">
+        <name>Ассорти баклажаны</name>
+        <description>Жареные баклажаны</description>
+        <portion>100/5</portion>
+        <image>test.jpg</image>
+        <options>
+            <price option="с помидорами" value="5.33$"/>
+            <price option="с чесноком" value="6.79$"/>
+            <price option="с орехами" value="7$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Баклажаны"/>
+            <ingridient name="Помидоры"/>
+            <ingridient name="Чеснок"/>
+            <ingridient name="Орехи"/>
+        </ingridients>
+    </food>
+
+    <food id="9" type="cold_snack">
+        <name>Соленья по-домашнему</name>
+        <description>Маринованные овощи</description>
+        <portion>150/10</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="5.30$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Маринованные огурцы"/>
+            <ingridient name="Маринованные помидоры"/>
+            <ingridient name="Маринованные кабачки"/>
+        </ingridients>
+    </food>
+
+    <food id="10" type="cold_snack">
+        <name>Бабушкины угощения</name>
+        <description>Ассорти из маринованных грибов</description>
+        <portion>120/20/10</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="8$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Маринованные лисички"/>
+            <ingridient name="Маринованные боровики"/>
+            <ingridient name="Маринованные белые грибы"/>
+        </ingridients>
+    </food>
+
+    <food id="11" type="cold_snack">
+        <name>Сырная тарелка</name>
+        <description>Смесь самых разнообразных сыров</description>
+        <portion>100/5</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="10.50$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Сыр чедер"/>
+            <ingridient name="Сыр дор блю"/>
+            <ingridient name="Сыр мраморный"/>
+        </ingridients>
+    </food>
+
+
+
+</menu>

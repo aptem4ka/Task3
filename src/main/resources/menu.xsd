@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.menu.epam.com/menu"
+        xmlns:tns="http://www.menu.epam.com/menu"
+        elementFormDefault="qualified">
+
+    <element name="menu">
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <element name="food" type="tns:food"/>
+            </sequence>
+        </complexType>
+    </element>
+
+
+    <complexType name="food">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="description" type="string" minOccurs="0"/>
+            <element name="portion" type="string"/>
+            <element name="image" type="tns:imageURL" minOccurs="0"/>
+            <element name="options" type="tns:optionsType"/>
+            <element name="ingridients" type="tns:ingridientsType"/>
+        </sequence>
+        <attribute name="id" use="required"/>
+        <attribute name="type" use="required"/>
+    </complexType>
+
+
+    <simpleType name="prices">
+        <restriction base="string"/>
+    </simpleType>
+
+    <attributeGroup name="priceAttr">
+        <attribute name="option" type="string" use="optional"/>
+        <attribute name="value" type="tns:priceValue" use="required"/>
+    </attributeGroup>
+
+    <simpleType name="priceValue">
+        <restriction base="string">
+            <pattern value="(\d)+(\.(\d){1,2})?\$"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="imageURL">
+        <restriction base="string">
+            <pattern value="(.)+\.(gif|jpg|jpeg|bmp|png)"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="optionsType">
+        <sequence minOccurs="1" maxOccurs="unbounded">
+            <element name="price">
+                <complexType>
+                    <attributeGroup ref="tns:priceAttr"/>
+                </complexType>
+            </element>
+        </sequence>
+    </complexType>
+
+    <complexType name="ingridientsType">
+        <sequence maxOccurs="unbounded">
+            <element name="ingridient">
+                <complexType>
+                    <attribute name="name" type="string"/>
+                </complexType>
+            </element>
+        </sequence>
+    </complexType>
+
+</schema>
