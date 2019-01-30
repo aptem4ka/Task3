@@ -173,6 +173,36 @@
         </ingridients>
     </food>
 
+    <food id="12" type="hot_snack">
+        <name>Лобио с шампиньонами</name>
+        <description>Фасоль с шампиньонами и грецким орехом</description>
+        <portion>150/5</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="9.44$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Фасоль"/>
+            <ingridient name="Шампиньоны"/>
+            <ingridient name="Грецкий Орех"/>
+        </ingridients>
+    </food>
+    <food id="13" type="hot_snack">
+        <name>Жульен</name>
+        <description>Жульен</description>
+        <portion>120/1</portion>
+        <image>test.jpg</image>
+        <options>
+            <price option="с курицей" value="11.35$"/>
+            <price option="с грибами" value="5.35$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Фасоль"/>
+            <ingridient name="Шампиньоны"/>
+            <ingridient name="Грецкий Орех"/>
+        </ingridients>
+    </food>
+
 
 
 </menu>

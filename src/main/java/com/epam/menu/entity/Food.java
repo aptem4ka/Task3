@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Food {
     private String type;
+    private String originalType;
     private int id;
     private String name;
     private String description;
@@ -14,15 +15,6 @@ public class Food {
     private Map<String, String> options=new HashMap<>();
 
     public Food() {
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        if (type.equals("cold_snack"))
-        this.type = "Холодные закуски";
     }
 
     public int getId() {
@@ -71,6 +63,24 @@ public class Food {
 
     public void setOptions(Map<String, String> options) {
         this.options = options;
+    }
+    public String getType() {
+        return type;
+    }
+
+    public String getOriginalType() {
+        return originalType;
+    }
+
+    public void setType(String type) {
+        if (type.equals("cold_snack")){
+            originalType=type;
+            this.type = "Холодные закуски";
+        }
+        if (type.equals("hot_snack")){
+            originalType=type;
+            this.type="Горячие закуски";
+        }
     }
 
     @Override

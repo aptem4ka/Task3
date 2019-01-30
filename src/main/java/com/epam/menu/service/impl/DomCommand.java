@@ -12,7 +12,7 @@ public class DomCommand implements Command {
     @Override
     public List<Food> execute(HttpServletRequest request) {
         XmlDao dao= DaoFactory.getInstance().getDao(DaoFactory.DaoType.DOM);
-        return dao.parse();
+        return dao.parse(request);
 
     }
 }

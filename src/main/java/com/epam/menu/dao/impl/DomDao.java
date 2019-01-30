@@ -4,6 +4,7 @@ import com.epam.menu.dao.XmlDao;
 import com.epam.menu.dao.util.DomParser;
 import com.epam.menu.entity.Food;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class DomDao implements XmlDao {
@@ -17,10 +18,10 @@ public class DomDao implements XmlDao {
     }
 
     @Override
-    public List<Food> parse() {
+    public List<Food> parse(HttpServletRequest request) {
         List<Food> foodList=null;
         try {
-            foodList=new DomParser().getFoodList();
+            foodList=new DomParser().getFoodList(request);
         }catch (Exception e){}
 
         return foodList;

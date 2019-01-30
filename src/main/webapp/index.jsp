@@ -4,6 +4,7 @@
 <h2>Hello World!</h2>
 <form action="menu.get" method="get">
     <input type="hidden" name="start" value="0"/>
+    <input type="hidden" name="category" value="cold_snack"/>
     Выбрать парсер
     <select name="parser">
         <option>dom</option>

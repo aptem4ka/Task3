@@ -2,6 +2,7 @@ package com.epam.menu.dao.util;
 
 import com.epam.menu.entity.Food;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
@@ -14,7 +15,7 @@ public class StaxHandler {
     List<Food> foodList=new ArrayList<>();
 
 
-    public List<Food> getFoodList(XMLStreamReader reader) throws Exception{
+    public List<Food> getFoodList(XMLStreamReader reader, HttpServletRequest request) throws Exception{
 
         Food food=null;
         MenuTagName elementName=null;
@@ -65,6 +66,7 @@ public class StaxHandler {
                 case XMLStreamConstants.END_ELEMENT:
                     elementName=MenuTagName.getElementTagName(reader.getLocalName());
                     if (elementName==MenuTagName.FOOD){
+                        if (food.getOriginalType().equals(request.getSession(false).getAttribute("category")))
                         foodList.add(food);
                     }
                     break;

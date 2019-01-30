@@ -7,6 +7,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.Map;
 public class DomParser {
     List<Food> foodList=new ArrayList<>();
 
-    public List<Food> getFoodList() throws Exception{
+    public List<Food> getFoodList(HttpServletRequest request) throws Exception{
         String dataSource=this.getClass().getClassLoader().getResource("menu.xml").getPath();
         DOMParser domParser=new DOMParser();
         domParser.parse(dataSource);
@@ -38,6 +39,7 @@ public class DomParser {
             food.setDescription(getSingleChild(foodElement,"description").getTextContent());
             food.setPortion(getSingleChild(foodElement,"portion").getTextContent());
             food.setOptions(getOptionsData(foodElement));
+            if (food.getOriginalType().equals(request.getSession(false).getAttribute("category")))
             foodList.add(food);
         }
         return foodList;
@@ -59,7 +61,7 @@ public class DomParser {
         }else {
             for (int i = 0; i < priceNodes.getLength(); i++) {
                 Element child = (Element) priceNodes.item(i);
-                prices.put(child.getAttribute("option"),child.getAttribute("value"));
+                prices.put("-"+child.getAttribute("option"),"-"+child.getAttribute("value"));
             }
         }
         return prices;

@@ -14,6 +14,8 @@
     <url-pattern>/menu.get</url-pattern>
   </servlet-mapping>
 
-
+  <session-config>
+    <session-timeout>10</session-timeout>
+  </session-config>
 
 </web-app>

@@ -7,6 +7,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class SaxDao implements XmlDao {
     }
 
     @Override
-    public List<Food> parse() {
+    public List<Food> parse(HttpServletRequest request) {
         XMLReader xmlReader=null;
         try {
             xmlReader= XMLReaderFactory.createXMLReader();
@@ -36,6 +37,6 @@ public class SaxDao implements XmlDao {
         }catch (SAXException e){}
         catch (IOException t){}
 
-        return handler.getFoodList();
+        return handler.getFoodList(request);
     }
 }

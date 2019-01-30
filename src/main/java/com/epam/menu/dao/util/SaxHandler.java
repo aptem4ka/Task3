@@ -5,6 +5,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +13,6 @@ public class SaxHandler extends DefaultHandler {
     private List<Food> foodList = new ArrayList<Food>();
     private Food food;
     private StringBuilder text;
-
-    public List<Food> getFoodList() {
-        return foodList;
-    }
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
@@ -58,5 +55,16 @@ public class SaxHandler extends DefaultHandler {
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
         text.append(ch, start, length);
+    }
+
+    public List<Food> getFoodList(HttpServletRequest request) {
+
+        List<Food> actualFood=new ArrayList<>();
+        for (Food food:foodList){
+            if (food.getOriginalType().equals(request.getSession(false).getAttribute("category"))){
+                actualFood.add(food);
+            }
+        }
+        return actualFood;
     }
 }

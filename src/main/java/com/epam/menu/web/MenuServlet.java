@@ -11,16 +11,9 @@ import org.xml.sax.helpers.XMLReaderFactory;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class MenuServlet extends HttpServlet {
     @Override
@@ -28,28 +21,41 @@ public class MenuServlet extends HttpServlet {
         int start=Integer.parseInt(req.getParameter("start"));
         int elementsPerPage=5;
         int end=start+elementsPerPage-1;
-        if (req.getSession(false)!=null)
-        req.getSession(true).setAttribute("local",req.getParameter("SessionLocale"));
 
-        String par=req.getParameter("parser");
-        Command command=CommandHelper.getInstance().getCommand(par);
-        List<Food> total=command.execute(req);
+        HttpSession session=req.getSession();
+            if (session.getAttribute("local")==null)
+            session.setAttribute("local", req.getParameter("SessionLocale"));
+            if (session.getAttribute("parser")==null)
+            session.setAttribute("parser",req.getParameter("parser"));
+            if (req.getParameter("category")!=null)
+                session.setAttribute("category", req.getParameter("category"));
+
+                setActualFoodList(req,start,end);
+
+        req.setAttribute("start",start);
+        //req.setAttribute("locale",req.getParameter("SessionLocale"));
+        RequestDispatcher requestDispatcher=req.getRequestDispatcher("table.jsp");
+        requestDispatcher.forward(req,resp);
+    }
+
+    private void setActualFoodList(HttpServletRequest req, int start, int end){
+
+        HttpSession session=req.getSession(false);
+        Command command=CommandHelper.getInstance().getCommand((String)session.getAttribute("parser"));
+        List<Food> total=command.execute(req); //Убрать параметр req
         List<Food> part=new ArrayList<>();
         for (int i=start ; i<=end ; i++){
             if (i<total.size()) {
-                part.add(total.get(i));
+                if (total.get(i).getOriginalType().equals(session.getAttribute("category"))){
+                    part.add(total.get(i));
+                }
             }else {
                 req.setAttribute("isFinish", "y");
             }
         }
         req.setAttribute("food",part);
-        req.setAttribute("parser",par);
-        req.setAttribute("start",start);
-       // req.setAttribute("end",end);
-        req.setAttribute("locale",req.getParameter("SessionLocale"));
-        RequestDispatcher requestDispatcher=req.getRequestDispatcher("table.jsp");
-        requestDispatcher.forward(req,resp);
 
     }
+
 
 }

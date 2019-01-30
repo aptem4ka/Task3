@@ -13,6 +13,6 @@ public class StaxCommand implements Command {
     @Override
     public List<Food> execute(HttpServletRequest request) {
         XmlDao dao=DaoFactory.getInstance().getDao(DaoFactory.DaoType.STAX);
-        return dao.parse();
+        return dao.parse(request);
     }
 }

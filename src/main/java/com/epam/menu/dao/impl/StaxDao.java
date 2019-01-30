@@ -4,6 +4,7 @@ import com.epam.menu.dao.XmlDao;
 import com.epam.menu.dao.util.StaxHandler;
 import com.epam.menu.entity.Food;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -23,7 +24,7 @@ public class StaxDao implements XmlDao {
     }
 
     @Override
-    public List<Food> parse() {
+    public List<Food> parse(HttpServletRequest request) {
         List<Food> foodList=null;
         String dataSource=this.getClass().getClassLoader().getResource("menu.xml").getPath();
         InputStream inputStream=null;
@@ -35,7 +36,7 @@ public class StaxDao implements XmlDao {
             xmlStreamReader= XMLInputFactory.newInstance().createXMLStreamReader(inputStream);
         }catch (XMLStreamException e){}
         try {
-            foodList=new StaxHandler().getFoodList(xmlStreamReader);
+            foodList=new StaxHandler().getFoodList(xmlStreamReader, request);
         }catch (Exception e){}
         return foodList;
     }
