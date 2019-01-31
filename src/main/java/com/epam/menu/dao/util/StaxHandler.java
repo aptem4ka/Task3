@@ -5,8 +5,10 @@ import com.epam.menu.entity.Food;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,7 @@ public class StaxHandler {
     List<Food> foodList=new ArrayList<>();
 
 
-    public List<Food> getFoodList(XMLStreamReader reader, HttpServletRequest request) throws Exception{
+    public List<Food> getFoodList(XMLStreamReader reader, HttpServletRequest request) throws XMLStreamException, IOException {
 
         Food food=null;
         MenuTagName elementName=null;

@@ -203,6 +203,68 @@
         </ingridients>
     </food>
 
+    <food id="14" type="hot_snack">
+        <name>Ахтамар мясной</name>
+        <description>Колбаса, ветчина, буженина, сыр, запеченые на мангале в лаваше</description>
+        <portion>1 шт.</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="5$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Колбаса"/>
+            <ingridient name="Ветчина"/>
+            <ingridient name="Буженина"/>
+            <ingridient name="Сыр"/>
+            <ingridient name="Лаваш"/>
+        </ingridients>
+    </food>
+
+    <food id="15" type="hot_snack">
+        <name>Сюрприз</name>
+        <description></description>
+        <portion>1 шт.</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="7$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Свинина"/>
+            <ingridient name="Говядина"/>
+            <ingridient name="Зелень"/>
+        </ingridients>
+    </food>
+
+    <food id="16" type="hot_snack">
+        <name>Креветки</name>
+        <description>Креветки</description>
+        <portion>120/30</portion>
+        <image>test.jpg</image>
+        <options>
+            <price option="жареные" value="4.35$"/>
+            <price option="отварные" value="4.50$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Королевские креветки"/>
+        </ingridients>
+    </food>
+    <food id="17" type="hot_snack">
+        <name>Мидии по-турецки</name>
+        <description>Мидии, фаршированные сыром и грецким орехом</description>
+        <portion>150/30</portion>
+        <image>test.jpg</image>
+        <options>
+            <price value="10$"/>
+        </options>
+        <ingridients>
+            <ingridient name="Мидии"/>
+            <ingridient name="Сыр"/>
+            <ingridient name="Грецкий орех"/>
+        </ingridients>
+    </food>
+
+
+
 
 
 </menu>

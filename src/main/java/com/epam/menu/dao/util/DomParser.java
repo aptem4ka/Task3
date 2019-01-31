@@ -6,8 +6,10 @@ import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +18,7 @@ import java.util.Map;
 public class DomParser {
     List<Food> foodList=new ArrayList<>();
 
-    public List<Food> getFoodList(HttpServletRequest request) throws Exception{
+    public List<Food> getFoodList(HttpServletRequest request) throws SAXException, IOException {
         String dataSource=this.getClass().getClassLoader().getResource("menu.xml").getPath();
         DOMParser domParser=new DOMParser();
         domParser.parse(dataSource);

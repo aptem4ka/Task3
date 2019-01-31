@@ -2,86 +2,89 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" isELIgnored="false"  %>
 
-<fmt:setLocale value="${sessionScope.local}"/>
+
 
 <html>
 <head>
-    <style type="text/css">
-
-        td{
-            height: 10px;
-            padding: 10px 10px;
-        }
-        #parent{
-            margin: auto;
-            text-align: center;
-            width: 80%;
-        }
-        #categories{
-            float: left;
-            width: 20%;
-            text-align: left;
-
-        }
-        #main-table{
-            float: right;
-            width: 80%;
-        }
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <c:set var="add" scope="request" value="${5}"/>
+    <fmt:setLocale value="${sessionScope.local}"/>
 
     <title>Menu</title>
 </head>
 <body>
-<h3 align="center">Бета-меню</h3>
-<div id="parent">
-<div id="categories">
-    <h3><a href="menu.get?start=0&category=cold_snack">Холодные закуски</a> </h3>
-    <h3><a href="menu.get?start=0&category=hot_snack">Горячие закуски</a></h3>
+<fmt:bundle basename="lang" prefix="lang.">
+    <div class="row content">
 
-</div>
-<c:set var="add" scope="request" value="${5}"/>
-<div id="main-table">
+        <div class="col-md-2">
 
-    <table border="1" cellspacing="20">
-            <tr>
-                <fmt:bundle basename="lang" prefix="lang.">
-            <th><fmt:message key="image"/> </th>
-            <th width="30%"><fmt:message key="name"/></th>
-            <th width="40%"><fmt:message key="description"/></th>
-            <th width="10%"><fmt:message key="portion"/></th>
-            <th width="10%"><fmt:message key="price"/></th>
-                </fmt:bundle>
-        </tr>
-        <c:forEach items="${food}" var="it" >
-            <tr>
-                <td><img src="${it.image}" width="100%"></td>
-                <td><c:out value="${it.name}"/></td>
-                <td><c:out value="${it.description}"/>
-                        <c:forEach items="${it.options}" var="entry">
-                            <br/>
-                            <c:out value="${entry.key}"/>
-                        </c:forEach>
-                     </td>
-                <td><c:out value="${it.portion}"/></td>
-                <td>
-                    <c:forEach items="${it.options}" var="entry">
-                        <c:out value="${entry.value}"/><br/>
-                    </c:forEach>
-                </td>
-            </tr>
-        </c:forEach>
-    </table><br/>
-    <c:if test="${requestScope.start>4}">
-        <a href="menu.get?start=${requestScope.start-requestScope.add}">Prev</a>
-    </c:if>
-    <c:if test="${requestScope.isFinish eq y}">
-        <a href="menu.get?start=${requestScope.start+requestScope.add}">Next</a>
-    </c:if>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th><fmt:message key="categories"/> </th>
+                </tr>
+                </thead>
+                <tbody>
 
-</div>
-</div>
+                <tr>
+                    <td><a href="menu.get?start=0&category=cold_snack"><fmt:message key="cold_snack"/></a></td>
+                </tr>
+                <tr>
+                    <td><a href="menu.get?start=0&category=hot_snack"><fmt:message key="hot_snack"/></a></td>
+                </tr>
 
+            </table>
 
+        </div>
+        <div class="col-md-9">
+            <table class="table table-striped">
+                <thead class="thead-light">
 
+                <tr>
+                    <th class="w-5"><fmt:message key="image"/> </th>
+                    <th class="w-25"><fmt:message key="name"/> </th>
+                    <th class="w-50"><fmt:message key="description"/> </th>
+                    <th class="w-10"><fmt:message key="portion"/> </th>
+                    <th class="w-10"><fmt:message key="price"/> </th>
+                </tr>
+
+                </thead>
+                <tbody>
+                <c:forEach items="${food}" var="it" >
+                    <tr>
+                        <td class="w-10" ><img src="${it.image}" class="img-fluid img-thumbnail" ></td>
+                        <td class="w-20"><c:out value="${it.name}"/></td>
+                        <td class="w-50"><c:out value="${it.description}"/>
+                            <c:forEach items="${it.options}" var="entry">
+                                <br/>
+                                <c:out value="${entry.key}"/>
+                            </c:forEach>
+                        </td>
+                        <td class="w-10"><c:out value="${it.portion}"/></td>
+                        <td class="w-10">
+                            <c:forEach items="${it.options}" var="entry">
+                                <c:out value="${entry.value}"/><br/>
+                            </c:forEach>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+        <ul class="pagination justify-content-center">
+        <c:if test="${requestScope.start>4}">
+            <li class="page-item"><a class="page-link" href="menu.get?start=${requestScope.start-requestScope.add}">Previous</a></li>
+        </c:if>
+        <c:if test="${requestScope.isFinish eq y}">
+            <li class="page-item"><a class="page-link" href="menu.get?start=${requestScope.start+requestScope.add}">Next</a></li>
+        </c:if>
+        </ul>
+
+</fmt:bundle>
 </body>
 </html>

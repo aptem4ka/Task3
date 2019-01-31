@@ -1,5 +1,7 @@
 package com.epam.menu.entity;
 
+import com.epam.menu.web.RequestedCategory;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -73,11 +75,11 @@ public class Food {
     }
 
     public void setType(String type) {
-        if (type.equals("cold_snack")){
+        if (type.equals(RequestedCategory.COLD_SNACK)){
             originalType=type;
             this.type = "Холодные закуски";
         }
-        if (type.equals("hot_snack")){
+        if (type.equals(RequestedCategory.HOT_SNACK)){
             originalType=type;
             this.type="Горячие закуски";
         }

@@ -3,6 +3,7 @@ package com.epam.menu.dao.impl;
 import com.epam.menu.dao.XmlDao;
 import com.epam.menu.dao.util.SaxHandler;
 import com.epam.menu.entity.Food;
+import com.epam.menu.exception.DAOException;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
@@ -21,11 +22,13 @@ public class SaxDao implements XmlDao {
     }
 
     @Override
-    public List<Food> parse(HttpServletRequest request) {
+    public List<Food> parse(HttpServletRequest request) throws DAOException {
         XMLReader xmlReader=null;
         try {
             xmlReader= XMLReaderFactory.createXMLReader();
-        }catch (SAXException e){}
+        }catch (SAXException e){
+            throw new DAOException(e);
+        }
         SaxHandler handler=new SaxHandler();
         xmlReader.setContentHandler(handler);
 
@@ -34,8 +37,10 @@ public class SaxDao implements XmlDao {
 
         try {
             xmlReader.parse(datasource);
-        }catch (SAXException e){}
-        catch (IOException t){}
+        }catch (SAXException|IOException e){
+            throw new DAOException(e);
+        }
+
 
         return handler.getFoodList(request);
     }
